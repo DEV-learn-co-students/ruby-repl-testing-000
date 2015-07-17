@@ -226,29 +226,17 @@ contacts
 
 ~~~solution
 
- contacts.each do |person, data|
-     data.each do |attribute, value|
-      	  if value.class == Array && value.include?("strawberry")
-           value.delete_if {|flavor| flavor == "strawberry"}
-       end
-     end
+contacts.each do |person, data|
+  data.each do |attribute, value|
+    if value.class == Array && value.include?("strawberry")
+      value.delete_if {|flavor| flavor == "strawberry"}
+    end
   end
+end
 
 ~~~validation
 
-assert_equal(response, 
-	{
-		"Jon Snow": {
-			name: "Jon", 
-			email: "jon_snow@thewall.we", 
-			favorite_icecream_flavors: ["chocolate", "vanilla", "mint chip"]}, 
-		"Freddy": {
-			name: "Freddy", 
-			email: "freddy@mercury.com", 
-			favorite_icecream_flavors: ["cookie dough", "mint chip"]
-		}
-	}
-)
+assert_equal(response, {"Jon Snow": {name: "Jon", email: "jon_snow@thewall.we", favorite_icecream_flavors: ["chocolate", "vanilla", "mint chip"]}, "Freddy": {name: "Freddy", email: "freddy@mercury.com", favorite_icecream_flavors: ["cookie dough", "mint chip"]}})
 
 ~~~
 
